@@ -186,10 +186,10 @@ class Game extends AppChildProcess {
 	/** Window/app resize event **/
 	override function onResize() {
 		super.onResize();
-		interactive.width = w();
-		interactive.height = h();
-		bg.scaleX = w();
-		bg.scaleY = h();
+		interactive.width = stageWid;
+		interactive.height = stageHei;
+		bg.scaleX = stageWid;
+		bg.scaleY = stageHei;
 	}
 
 

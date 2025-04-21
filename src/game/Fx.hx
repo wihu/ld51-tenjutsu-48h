@@ -56,16 +56,16 @@ class Fx extends GameChildProcess {
 	}
 
 	/** Create a HParticle instance in the BG layer, using ADDITIVE blendmode **/
-	public inline function allocBg_add(id,x,y) return pool.alloc(bg_add, Assets.tiles.getTileRandom(id), x, y);
+	public inline function allocBg_add(id,x,y) return pool.alloc(bg_add, Assets.tiles.getRandomTile(id), x, y);
 
 	/** Create a HParticle instance in the BG layer, using NORMAL blendmode **/
-	public inline function allocBg_normal(id,x,y) return pool.alloc(bg_normal, Assets.tiles.getTileRandom(id), x, y);
+	public inline function allocBg_normal(id,x,y) return pool.alloc(bg_normal, Assets.tiles.getRandomTile(id), x, y);
 
 	/** Create a HParticle instance in the MAIN layer, using ADDITIVE blendmode **/
-	public inline function allocMain_add(id,x,y) return pool.alloc( main_add, Assets.tiles.getTileRandom(id), x, y );
+	public inline function allocMain_add(id,x,y) return pool.alloc( main_add, Assets.tiles.getRandomTile(id), x, y );
 
 	/** Create a HParticle instance in the MAIN layer, using NORMAL blendmode **/
-	public inline function allocMain_normal(id,x,y) return pool.alloc(main_normal, Assets.tiles.getTileRandom(id), x, y);
+	public inline function allocMain_normal(id,x,y) return pool.alloc(main_normal, Assets.tiles.getRandomTile(id), x, y);
 
 	public inline function allocAnim(id:String, x,y, loop=true, speed=1.0) {
 		var p = pool.alloc(anims, Assets.entities.getTile(id), x, y);
@@ -133,8 +133,8 @@ class Fx extends GameChildProcess {
 	public inline function flashBangS(c:Col, a:Float, t=0.1) {
 		var e = new h2d.Bitmap(h2d.Tile.fromColor(c,1,1,a));
 		game.root.add(e, Const.DP_FX_FRONT);
-		e.scaleX = game.w();
-		e.scaleY = game.h();
+		e.scaleX = game.stageWid;
+		e.scaleY = game.stageHei;
 		e.blendMode = Add;
 		game.tw.createS(e.alpha, 0, t).end(e.remove);
 	}
@@ -142,8 +142,8 @@ class Fx extends GameChildProcess {
 	public inline function flashBangEaseInS(c:Col, a:Float, t=0.1) {
 		var e = new h2d.Bitmap(h2d.Tile.fromColor(c,1,1,a));
 		game.root.add(e, Const.DP_FX_FRONT);
-		e.scaleX = game.w();
-		e.scaleY = game.h();
+		e.scaleX = game.stageWid;
+		e.scaleY = game.stageHei;
 		e.blendMode = Add;
 		game.tw.createS(e.alpha, 0>1, 0.1).end(
 			()->game.tw.createS(e.alpha, 0, t).end( e.remove )

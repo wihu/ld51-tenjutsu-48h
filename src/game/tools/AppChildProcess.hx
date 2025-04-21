@@ -40,7 +40,7 @@ class AppChildProcess extends dn.Process {
 	override function onResize() {
 		super.onResize();
 
-		fadeMask.scaleX = w();
-		fadeMask.scaleY = h();
+		fadeMask.scaleX = stageWid;
+		fadeMask.scaleY = stageHei;
 	}
 }

@@ -114,8 +114,8 @@ class TitleScreen extends AppChildProcess {
 	override function onResize() {
 		super.onResize();
 
-		bgCol.scaleX = w();
-		bgCol.scaleY = h();
+		bgCol.scaleX = stageWid;
+		bgCol.scaleY = stageHei;
 
 		upscale = dn.heaps.Scaler.bestFit_i(box.tile.height, box.tile.height); // only height matters
 		box.setScale(upscale);
@@ -126,11 +126,11 @@ class TitleScreen extends AppChildProcess {
 		fxNormal.setScale(upscale);
 
 		pressStart.setScale(upscale);
-		pressStart.setPosition( Std.int( w()*0.5-pressStart.textWidth*0.5*pressStart.scaleX ), Std.int( h()*0.82-pressStart.textHeight*0.5*pressStart.scaleY ) );
+		pressStart.setPosition( Std.int( stageWid*0.5-pressStart.textWidth*0.5*pressStart.scaleX ), Std.int( stageHei*0.82-pressStart.textHeight*0.5*pressStart.scaleY ) );
 
-		box.setPosition( Std.int( w()*0.5 ), Std.int( h()*0.5 ) );
-		bg.setPosition( Std.int( w()*0.5 ), Std.int( h()*0.5 ) );
-		logo.setPosition( Std.int( w()*0.5 ), Std.int( h()*0.5 ) );
+		box.setPosition( Std.int( stageWid*0.5 ), Std.int( stageHei*0.5 ) );
+		bg.setPosition( Std.int( stageWid*0.5 ), Std.int( stageHei*0.5 ) );
+		logo.setPosition( Std.int( stageWid*0.5 ), Std.int( stageHei*0.5 ) );
 	}
 
 	inline function allocAdd(id:String, x:Float, y:Float) : HParticle {
@@ -152,8 +152,8 @@ class TitleScreen extends AppChildProcess {
 		pressStart.visible = Std.int( stime/0.25 ) % 2 == 0;
 
 		if( ready && !cd.hasSetS("fx",0.03) ) {
-			var w = w()/upscale;
-			var h = h()/upscale;
+			var w = stageWid/upscale;
+			var h = stageHei/upscale;
 			// Black smoke
 			for(i in 0...4) {
 				var xr = rnd(0,1);

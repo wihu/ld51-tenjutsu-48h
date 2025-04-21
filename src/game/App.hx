@@ -56,8 +56,8 @@ class App extends dn.Process {
 
 	override function onResize() {
 		super.onResize();
-		bg.scaleX = w();
-		bg.scaleY = h();
+		bg.scaleX = stageWid;
+		bg.scaleY = stageHei;
 	}
 
 	public function startTitle() {
