@@ -1,0 +1,9 @@
+_base.hxml
+-D windowSize=1280x720
+-D forceWindowed
+-hl bin/mac/client.c
+-lib hlsdl
+-lib hlopenal
+-lib hashlink
+-D hlgen.makefile=make
+-cp patches/ase/src

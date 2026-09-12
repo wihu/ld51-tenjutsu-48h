@@ -200,7 +200,7 @@ class App extends dn.Process {
 	function initEngine() {
 		// Engine settings
 		engine.backgroundColor = Assets.black().withAlpha(1);
-        #if( hl && !debug )
+        #if( hl && !debug && !forceWindowed )
         engine.fullScreen = true;
         #end
 
